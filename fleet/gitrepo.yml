@@ -1,0 +1,10 @@
+apiVersion: fleet.cattle.io/v1alpha1
+kind: GitRepo
+metadata:
+  name: nginx-gitops
+  namespace: fleet-local
+spec:
+  repo: https://github.com/hackthur-organitzation/hackthur-kluster.git
+  branch: feature/test-deployments
+  paths:
+    - apps/nginx
