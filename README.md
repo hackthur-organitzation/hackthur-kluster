@@ -110,3 +110,6 @@ cattle-fleet-system => ejecutar los controladores centrales de fleet
 fleet-local => almacenar recursos de gestion de fleet dentro del cluster local, como nuestro nuveo futuro GitOp
 default =>  aloja nuestra app nginx
 
+
+
+
