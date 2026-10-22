@@ -19,7 +19,7 @@ nginx-lab-6889885447   0         0         0       37m
 ```
 
 
-### Commands to check for replicaset and its versions
+### Check for replicaset and its versions
 
 ```bash
 ## check for the history
@@ -61,6 +61,12 @@ Pod Template:
 Events:            <none>
 
 ```
+
+
+## Check by specific namespace
+
+- see logs: `kubectl logs -n cattle-fleet-local-system deployments/fleet-agent --since=30m tail=100 --timestamps`
+- see deployment for the agent: `kubectl get deployment fleet-agent -n cattle-fleet-local-system -o yaml`
 
 
 
@@ -112,4 +118,27 @@ default =>  aloja nuestra app nginx
 
 
 
+```bash
+❯ kubectl get deployment fleet-agent -n cattle-fleet-local-system -o jsonpath='{.spec.template.spec.volumes}' | jq
+[
+  {
+    "emptyDir": {},
+    "name": "kube"
+  },
+  {
+    "emptyDir": {},
+    "name": "tmp"
+  }
+]
+```
 
+
+
+
+## Labels and Selectors
+
+Labels are key/value pairs that are attached to objects such as Pods. Labels are intended to be used 
+to specify indentifying atttributes of objects that are meaningful and relevant to users, but do not 
+directly imply semantics to the core system. Labels can be used to organize and to select subsets of 
+objects. Labels can be attached to objects at creation time and subsequently added and modified at any
+time. Each object can have a set of key/valu labels defined. Each key must be unique for a given object.
